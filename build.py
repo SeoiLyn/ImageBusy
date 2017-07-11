@@ -1,10 +1,9 @@
 #!/usr/bin/python 
 # -*- coding:utf-8 -*-
-#python 2.7.x
+#python 3.5.x
 
 import os
 import shutil
-import ConfigParser
 import zipfile,os.path
 import platform
 
@@ -32,7 +31,7 @@ def copy_files(path, target):
 #for Windows cmake project usage
 def Windows_cmake():
 
-    vs_choice = raw_input("Select Visual studio version(1 for VS2008 32bit, 2 for VS2008 64bit, 3 for VS2015 32bit, 4 for VS2015 64bit)?")
+    vs_choice = input("Select Visual studio version(1 for VS2008 32bit, 2 for VS2008 64bit, 3 for VS2015 32bit, 4 for VS2015 64bit)?")
 
     if (vs_choice == '1'):
         VS_VERSION = VS_VERSION_9
@@ -105,7 +104,7 @@ def Windows_cmake():
     copy_files(ffmpeg_bin, shadowReleaseDir)
     copy_files(ffmpeg_bin, shadowDebugDir)
 
-    choice = raw_input("Do you want to open ImageBusy.sln(y/n, default to n)?")
+    choice = input("Do you want to open ImageBusy.sln(y/n, default to n)?")
     if choice == 'y' :
         os.startfile(shadow+"/ImageBusy.sln")
 
@@ -140,13 +139,13 @@ def Apple_cmake():
 if __name__ == "__main__":
 
     if platform.system() == "Windows":
-        print "system is Windows"
+        print("system is Windows")
         Windows_cmake()
     elif platform.system() == "Darwin":
-        print "system is Mac"
+        print("system is Mac")
         Apple_cmake()
     elif platform.system() == "linux":
-        print "system is Linux"
+        print("system is Linux")
         Linux_cmake()
     else:
-        print "system is unknow! the name is: "+platform.system();
+        print("system is unknow! the name is: "+platform.system())
